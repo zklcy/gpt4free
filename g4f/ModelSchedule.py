@@ -44,7 +44,7 @@ class Scheduler:
             return None
 
         for provider in queue:
-            if not hasattr(provider,'_lasttime') or time.time() - self._lasttime >= 60:
+            if not hasattr(provider,'_lasttime') or time.time() - provider._lasttime >= 60:
                 print(f"get provider {provider.__name__}")
                 provider._lasttime = time.time()
                 # 放到队尾
