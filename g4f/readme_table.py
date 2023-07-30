@@ -137,7 +137,7 @@ def testAllProvider():
                     if provid in Chat4CanUsedStreamProvider:
                          Chat4CanUsedStreamProvider.remove(provid)                                         
             else:
-                ret = str(response)
+                ret = ''.join(response)
                 print(ret)
                 if not isError(ret):
                     if isChat35:
