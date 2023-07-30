@@ -1,7 +1,16 @@
 #!/bin/bash
 
-# 激活Python虚拟环境
+# Check if the app.py process is running
+if pgrep -f "python3 interference/app.py" > /dev/null; then
+    # If running, kill the existing app.py process
+    echo "Stopping the existing app.py process..."
+    kill $(pgrep -f "python3 interference/app.py")
+    sleep 2  # Wait for the process to terminate (adjust the time as needed)
+fi
+
+# Activate Python virtual environment
 source ./venv/bin/activate
 
-# 运行main.py，并将输出重定向到log.txt
+# Run app.py and redirect output to log.txt
+echo "Starting app.py..."
 nohup python3 interference/app.py >> log.txt 2>&1 &
