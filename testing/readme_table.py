@@ -130,21 +130,45 @@ def testAllProvider():
                     print(message)
                 if not isError(ret):
                     if isChat35:
-                        Chat35CanUsedStreamProvider.append(provider)
+                        if provider not in Chat35CanUsedStreamProvider:
+                            Chat35CanUsedStreamProvider.append(provider)
                     if isChat4:
-                        Chat4CanUsedStreamProvider.append(provider)                    
+                        if provider not in Chat4CanUsedStreamProvider:
+                            Chat4CanUsedStreamProvider.append(provider)                    
+                else:
+                    if provider in Chat35CanUsedStreamProvider:
+                         Chat35CanUsedStreamProvider.remove(provider)
+                    if provider in Chat4CanUsedStreamProvider:
+                         Chat4CanUsedStreamProvider.remove(provider)                                         
             else:
                 ret = message
                 print(response)
                 if not isError(ret):
                     if isChat35:
-                        Chat35CanUsedProvider.append(provider)
+                        if provider not in Chat35CanUsedProvider:
+                            Chat35CanUsedProvider.append(provider)
                     if isChat4:
-                        Chat4CanUsedStreamProvider.append(provider)                                        
+                        if provider not in Chat4CanUsedProvider:
+                            Chat4CanUsedProvider.append(provider)                            
+                else:
+                    if provider in Chat35CanUsedProvider:
+                         Chat35CanUsedProvider.remove(provider)
+                    if provider in Chat4CanUsedProvider:
+                         Chat4CanUsedProvider.remove(provider)                                     
 
         except Exception as e:
             print(e)
             traceback.print_exc()
+
+            if provider in Chat35CanUsedProvider:
+                    Chat35CanUsedProvider.remove(provider)
+            if provider in Chat4CanUsedProvider:
+                    Chat4CanUsedProvider.remove(provider)                                     
+            if provider in Chat35CanUsedStreamProvider:
+                    Chat35CanUsedStreamProvider.remove(provider)
+            if provider in Chat4CanUsedStreamProvider:
+                    Chat4CanUsedStreamProvider.remove(provider)                                                             
+
         finally:
             print("-----------------------------------------------------------------------")        
 
