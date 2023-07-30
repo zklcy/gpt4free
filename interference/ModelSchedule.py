@@ -36,13 +36,15 @@ class Scheduler:
             return None
 
         for provider in queue:
-            if not hasattr(provider,'_lasttime') or time.time() - self.last_reset_time >= 60:
+            if not hasattr(provider,'_lasttime') or time.time() - self._lasttime >= 60:
+                print(f"get provider {provider.__name__}")
                 provider._lasttime = time.time()
                 # 放到队尾
                 queue.remove(provider)
                 queue.append(provider)
                 return provider
     
+        print(f"get provider {provider.__name__}, {time.time()-self._lasttime}ms before used")
         #实在找不到就取第一个吧
         provider = queue.pop() 
         provider._lasttime = time.time()
@@ -59,6 +61,6 @@ sched_thread = threading.Thread(target=scheduler.schedule_objects)
 sched_thread.daemon = True
 sched_thread.start()
 
-if __name__ == "main":
+if __name__ == "__main__":
     while(True):
-        pass
+        time.sleep(60)
