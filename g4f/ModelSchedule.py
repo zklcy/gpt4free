@@ -64,10 +64,15 @@ class Scheduler:
 scheduler = Scheduler()
 
 # 启动调度线程
-import threading
-sched_thread = threading.Thread(target=scheduler.schedule_objects)
-sched_thread.daemon = True
-sched_thread.start()
+# import threading
+# sched_thread = threading.Thread(target=scheduler.schedule_objects)
+# sched_thread.daemon = True
+# sched_thread.start()
+import asyncio
+loop = asyncio.get_event_loop()
+# Run the coroutine in the event loop
+loop.run_until_complete(scheduler.schedule_objects())
+
 
 if __name__ == "__main__":
     while(True):
