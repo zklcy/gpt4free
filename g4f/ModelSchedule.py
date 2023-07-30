@@ -59,7 +59,13 @@ class Scheduler:
 # 示例代码使用时：
 scheduler = Scheduler()
 
+ExeOnce = True
 def start_scheduler():
+    global ExeOnce
+    if not ExeOnce:
+        return
+    
+    ExeOnce = False
     # 启动调度线程
     import threading
     sched_thread = threading.Thread(target=scheduler.schedule_objects)

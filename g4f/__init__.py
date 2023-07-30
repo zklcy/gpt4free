@@ -78,8 +78,8 @@ class ChatCompletion:
 
             if logging: print(f'Using {engine.__name__} provider')
 
-            return (engine._create_completion(model.name, messages, stream, **kwargs)
-                    if stream else ''.join(engine._create_completion(model.name, messages, stream, **kwargs)))
+            return (engine._create_completion(model, messages, stream, **kwargs)
+                    if stream else ''.join(engine._create_completion(model, messages, stream, **kwargs)))
         except TypeError as e:
             print(e)
             arg: str = str(e).split("'")[1]
