@@ -8,7 +8,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 relative_path = os.path.join(current_dir, "..")
 sys.path.append(relative_path)
 
-from g4f import Model, ChatCompletion, Provider
+from g4f import Model, ChatCompletion, Provider, ModelSchedule
 from flask import Flask, request, Response
 from flask_cors import CORS
 
@@ -90,4 +90,6 @@ if __name__ == '__main__':
         'debug': True
     }
 
+    ModelSchedule.start_scheduler()
+    
     app.run(**config)

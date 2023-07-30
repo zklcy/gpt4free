@@ -109,8 +109,7 @@ def testAllProvider():
     def isChat4():
         return 'gpt-4' in provid.model
 
-    def test(model, provid):
-        
+    def test(model, provid):        
         print(f"Start Test {provid.__name__} {model}")
         stream = provid.supports_stream
         try:
@@ -125,10 +124,10 @@ def testAllProvider():
                     ret += message
                     print(message)
                 if not isError(ret):
-                    if isChat35:
+                    if isChat35():
                         if provid not in Chat35CanUsedStreamProvider:
                             Chat35CanUsedStreamProvider.append(provid)
-                    if isChat4:
+                    if isChat4():
                         if provid not in Chat4CanUsedStreamProvider:
                             Chat4CanUsedStreamProvider.append(provid)                    
                 else:
@@ -140,10 +139,10 @@ def testAllProvider():
                 ret = ''.join(response)
                 print(ret)
                 if not isError(ret):
-                    if isChat35:
+                    if isChat35():
                         if provid not in Chat35CanUsedProvider:
                             Chat35CanUsedProvider.append(provid)
-                    if isChat4:
+                    if isChat4():
                         if provid not in Chat4CanUsedProvider:
                             Chat4CanUsedProvider.append(provid)                            
                 else:
