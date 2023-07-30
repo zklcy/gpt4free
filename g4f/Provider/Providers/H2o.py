@@ -4,7 +4,7 @@ from json import loads
 import os
 import json
 import requests
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://gpt-gm.h2o.ai'
 model = ['falcon-40b', 'falcon-7b', 'llama-13b']

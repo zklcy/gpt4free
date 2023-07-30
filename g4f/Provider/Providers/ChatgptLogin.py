@@ -1,5 +1,5 @@
 import os
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 import requests
 import re
 import base64

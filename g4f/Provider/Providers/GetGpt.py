@@ -3,7 +3,7 @@ import json
 import uuid
 import requests
 from Crypto.Cipher import AES
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://chat.getgpt.world/'
 model = ['gpt-3.5-turbo']

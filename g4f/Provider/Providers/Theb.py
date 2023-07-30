@@ -3,7 +3,7 @@ import json
 import time
 import subprocess
 
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://theb.ai'
 model = ['gpt-3.5-turbo']

@@ -6,7 +6,7 @@ import queue
 import threading
 
 from curl_cffi import requests
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://play.vercel.ai'
 supports_stream = True

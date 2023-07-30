@@ -6,7 +6,7 @@ import random
 import hashlib
 import requests
 
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 from datetime import datetime
 
 url: str = 'https://ai.ls'

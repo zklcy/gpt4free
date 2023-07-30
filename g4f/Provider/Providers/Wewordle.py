@@ -4,7 +4,7 @@ import json
 import random
 import time
 import string
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = "https://wewordle.org/gptapi/v1/android/turbo"
 model = ['gpt-3.5-turbo']

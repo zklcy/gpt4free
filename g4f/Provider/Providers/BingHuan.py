@@ -1,7 +1,7 @@
 import os,sys
 import json
 import subprocess
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://b.ai-huan.xyz'
 model = ['gpt-3.5-turbo', 'gpt-4']

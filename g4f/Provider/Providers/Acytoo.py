@@ -1,5 +1,5 @@
 import os, requests
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 import json
 
 url = "https://chat.acytoo.com/api/completions"

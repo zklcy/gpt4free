@@ -10,7 +10,7 @@ import aiohttp
 import asyncio
 
 import requests
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://bing.com/chat'
 model = ['gpt-4']

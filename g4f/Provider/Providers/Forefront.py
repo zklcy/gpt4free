@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from ...typing import sha256, Dict, get_type_hints
+from ..typing import sha256, Dict, get_type_hints
 
 url = 'https://forefront.com'
 model = ['gpt-3.5-turbo']
