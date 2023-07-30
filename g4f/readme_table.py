@@ -99,9 +99,9 @@ def testAllProvider():
 
 
     def isError(msg):
-            if "error" in msg.lower():
-                return True
-            return False
+            if "hello" in msg.lower():
+                return False
+            return True
         
     def isChat35():
         return 'gpt-3.5-turbo' in provid.model
