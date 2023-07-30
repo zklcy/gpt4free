@@ -153,9 +153,9 @@ def testAllProvider():
     for i in chat4Providers:
         test('gpt-4' ,i )    
 
-    print(f"Chat35|Streams|{''.join(Chat35CanUsedStreamProvider)}\n")
-    print(f"Chat35|{''.join(Chat35CanUsedProvider)}\n")
-    print(f"Chat4|Streams|{''.join(Chat4CanUsedStreamProvider)}\n")
-    print(f"Chat4||{''.join(Chat4CanUsedProvider)}\n")
+    print(f"Chat35|Streams|{','.join(str(item) for item in Chat35CanUsedStreamProvider)}\n")
+    print(f"Chat35|{','.join(str(item) for item in Chat35CanUsedProvider)}\n")
+    print(f"Chat4|Streams|{','.join(str(item) for item in Chat4CanUsedStreamProvider)}\n")
+    print(f"Chat4||{','.join(str(item) for item in Chat4CanUsedProvider)}\n")
 
 testAllProvider()
