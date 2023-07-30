@@ -141,7 +141,7 @@ def testAllProvider():
                     if provider in Chat4CanUsedStreamProvider:
                          Chat4CanUsedStreamProvider.remove(provider)                                         
             else:
-                ret = message
+                ret = response
                 print(response)
                 if not isError(ret):
                     if isChat35:
@@ -177,9 +177,9 @@ def testAllProvider():
     for i in chat4Providers:
         test('gpt-4' ,i )    
 
-    print(f"Chat35|Streams|{','.join(str(item) for item in Chat35CanUsedStreamProvider)}\n")
-    print(f"Chat35|{','.join(str(item) for item in Chat35CanUsedProvider)}\n")
-    print(f"Chat4|Streams|{','.join(str(item) for item in Chat4CanUsedStreamProvider)}\n")
-    print(f"Chat4||{','.join(str(item) for item in Chat4CanUsedProvider)}\n")
+    print(f"Chat35|Streams|{','.join(item.__name__ for item in Chat35CanUsedStreamProvider)}\n")
+    print(f"Chat35|{','.join(item.__name__ for item in Chat35CanUsedProvider)}\n")
+    print(f"Chat4|Streams|{','.join(item.__name__ for item in Chat4CanUsedStreamProvider)}\n")
+    print(f"Chat4||{','.join(item.__name__ for item in Chat4CanUsedProvider)}\n")
 
-testAllProvider()
+# testAllProvider()
