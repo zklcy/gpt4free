@@ -87,9 +87,10 @@ if __name__ == '__main__':
     config = {
         'host': '0.0.0.0',
         'port': 1337,
-        'debug': True
+        'debug': True,
+        'use_reloader': False
     }
 
     ModelSchedule.start_scheduler()
-    
+
     app.run(**config)
