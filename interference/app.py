@@ -21,8 +21,10 @@ def chat_completions():
     model = request.json.get('model', 'gpt-3.5-turbo')
     messages = request.json.get('messages')
     
-    response = ChatCompletion.create(model=model, stream=streaming,
-                                     messages=messages)
+    # response = ChatCompletion.create(model=model, stream=streaming,
+    #                                  messages=messages)
+    response = ChatCompletion.auto_create(model=model, stream=streaming,
+                                     messages=messages)    
     
     if not streaming:
         while 'curl_cffi.requests.errors.RequestsError' in response:
@@ -76,7 +78,7 @@ def chat_completions():
             }
 
             yield 'data: %s\n\n' % json.dumps(completion_data, separators=(',' ':'))
-            time.sleep(0.1)
+            # time.sleep(0.1)
 
     return app.response_class(stream(), mimetype='text/event-stream')
 

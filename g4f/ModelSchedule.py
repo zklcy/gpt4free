@@ -7,13 +7,19 @@ import time
 from testing import readme_table as canUsedChatgpt
 
 
+
+
 class Scheduler:    
+    GPT35STREAM = 'GPT35STREAM' 
+    GPT35='GPT35'
+    GPT4STREAM='GPT4STREAM'
+    GPT4='GPT4'    
     def __init__(self):
         self.queue={
-            'GPT35STREAM' : canUsedChatgpt.Chat35CanUsedStreamProvider,
-            'GPT35':canUsedChatgpt.Chat35CanUsedProvider,
-            'GPT4STREAM' : canUsedChatgpt.Chat4CanUsedStreamProvider,
-            'GPT4':canUsedChatgpt.Chat4CanUsedProvider
+            self.GPT35STREAM : canUsedChatgpt.Chat35CanUsedStreamProvider,
+            self.GPT35:canUsedChatgpt.Chat35CanUsedProvider,
+            self.GPT4STREAM : canUsedChatgpt.Chat4CanUsedStreamProvider,
+            self.GPT4:canUsedChatgpt.Chat4CanUsedProvider
         }
 
     def reset_counters(self):
@@ -31,8 +37,10 @@ class Scheduler:
         queue = self.queue.get(queue_name,None)
         if queue is None:
             print(f"Wrong queue name({queue_name})")
+            return None
 
         if len(queue)<=0:
+            print(f"Oops,No one can use.")
             return None
 
         for provider in queue:
