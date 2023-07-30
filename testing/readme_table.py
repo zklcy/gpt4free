@@ -1,3 +1,9 @@
+import sys
+import os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+relative_path = os.path.join(current_dir, "..")
+sys.path.append(relative_path)
+
 from g4f.Provider import (
     Ails,
     You,

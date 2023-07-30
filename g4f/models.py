@@ -132,7 +132,16 @@ class Model:
         name: str = 'palm'
         base_provider: str = 'google'
         best_provider: Provider.Provider = Provider.Bard
-        
+
+    class gpt_35_deepai:
+        name: str = 'gpt_35_deepai'
+        base_provider: str = 'openai'
+        best_provider = Provider.Provider = Provider.DeepAi
+
+    class gpt_35_getgpt:
+        name: str = 'gpt_35_getgpt'
+        base_provider: str = 'openai'
+        best_provider = Provider.Provider = Provider.GetGpt
             
     """    'falcon-40b': Model.falcon_40b,
     'falcon-7b': Model.falcon_7b,
@@ -229,4 +238,8 @@ class ModelUtils:
         'falcon-40b': Model.falcon_40b,
         'falcon-7b': Model.falcon_7b,
         'llama-13b': Model.llama_13b,
+
+        'gpt_35_getgpt':Model.gpt_35_getgpt,
+        'gpt_35_deepai':Model.gpt_35_deepai
+
     }
