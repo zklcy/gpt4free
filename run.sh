@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Check if the app.py process is running
-if pgrep -f "python3 interference/app.py" > /dev/null; then
+if pgrep -f "interference/app.py" > /dev/null; then
     # If running, kill the existing app.py process
     echo "Stopping the existing app.py process..."
-    kill $(pgrep -f "python3 interference/app.py")
+    kill $(pgrep -f "interference/app.py")
     sleep 2  # Wait for the process to terminate (adjust the time as needed)
 fi
 
