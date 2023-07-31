@@ -1,7 +1,7 @@
 import sys
 import os
 import traceback
-import datetime
+from datetime import datetime
 import time
 
 from .Provider import (
