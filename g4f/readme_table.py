@@ -1,6 +1,8 @@
 import sys
 import os
 import traceback
+import datetime
+import time
 
 from .Provider import (
 Acytoo,             
@@ -33,8 +35,7 @@ from urllib.parse import urlparse
 providers = [
 Acytoo,             
 Aichat,             
-Ails,               
-AiService,          
+Ails,            
 AItianhu,           
 Bard,               
 Bing,               
@@ -99,9 +100,9 @@ def testAllProvider():
 
 
     def isError(msg):
-            if "hello" in msg.lower():
-                return False
-            return True
+            if "err" in msg.lower():
+                return True
+            return False
         
     def isChat35():
         return 'gpt-3.5-turbo' in provid.model
@@ -110,9 +111,10 @@ def testAllProvider():
         return 'gpt-4' in provid.model
 
     def test(model, provid):        
-        print(f"Start Test {provid.__name__} {model}")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}]Start Test {provid.__name__} {model}")
         stream = provid.supports_stream
         try:
+            starttime=time.time()
             response = provid._create_completion(model, [ {"role": "user", "content": "hello"}], stream)
 
             # response = ChatCompletion.create(model=model, provider=provider, messages=[
@@ -127,14 +129,18 @@ def testAllProvider():
                     if isChat35():
                         if provid not in Chat35CanUsedStreamProvider:
                             Chat35CanUsedStreamProvider.append(provid)
+                            print(f"Add to chat35 Stream queue,cost {time.time()-starttime}ms")
                     if isChat4():
                         if provid not in Chat4CanUsedStreamProvider:
                             Chat4CanUsedStreamProvider.append(provid)                    
+                            print(f"Add to chat4 Stream queue,cost {time.time()-starttime}ms")
                 else:
                     if provid in Chat35CanUsedStreamProvider:
                          Chat35CanUsedStreamProvider.remove(provid)
+                         print(f"Remove from chat35 Stream queue,cost {time.time()-starttime}ms")
                     if provid in Chat4CanUsedStreamProvider:
-                         Chat4CanUsedStreamProvider.remove(provid)                                         
+                         Chat4CanUsedStreamProvider.remove(provid)                               
+                         print(f"Remove from chat4 Stream queue,cost {time.time()-starttime}ms")          
             else:
                 ret = ''.join(response)
                 print(ret)
@@ -142,17 +148,21 @@ def testAllProvider():
                     if isChat35():
                         if provid not in Chat35CanUsedProvider:
                             Chat35CanUsedProvider.append(provid)
+                            print(f"Add to chat35 queue,cost {time.time()-starttime}ms")
                     if isChat4():
                         if provid not in Chat4CanUsedProvider:
-                            Chat4CanUsedProvider.append(provid)                            
+                            Chat4CanUsedProvider.append(provid)                         
+                            print(f"Add to chat4 queue,cost {time.time()-starttime}ms")   
                 else:
                     if provid in Chat35CanUsedProvider:
                          Chat35CanUsedProvider.remove(provid)
+                         print(f"Remove from chat35 queue,cost {time.time()-starttime}ms")
                     if provid in Chat4CanUsedProvider:
                          Chat4CanUsedProvider.remove(provid)                                     
+                         print(f"Remove from chat4 queue,cost {time.time()-starttime}ms")
 
         except Exception as e:
-            print(e)
+            print(f"Exception:{e}")
             traceback.print_exc()
 
             if provid in Chat35CanUsedProvider:
